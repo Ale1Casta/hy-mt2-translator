@@ -8,6 +8,9 @@ Hy-MT2 Translator is a learning project. It is an Android app that translates te
 
 > The app's interface is currently in **Italian only**.
 
+### 📥 [Download the APK (Google Drive, ~2.05 GB)](https://drive.google.com/file/d/1oqD1EhcYGJaSUmCqj5aYR2Hk1sSKETZA/view?usp=drive_link)
+Both models are already included. See [Installation](#installation-apk) for the requirements.
+
 <!-- Screenshots: add images in docs/screenshots/ and uncomment
 <p align="center">
   <img src="docs/screenshots/translate.png" width="230">
@@ -82,7 +85,8 @@ The app is not on the Play Store. It is distributed as an APK for personal use.
 
 - **Requirements:** Android 10 or later (API 29), **arm64-v8a**, about **2.2 GB** for the APK plus **~1.1 GB** of free space on first launch, recommended RAM ≥ 4 GB.
 - On first launch the translation model is copied from the APK into internal storage, because llama.cpp needs a real file. A progress bar is shown and the copy happens only once.
-- The APK is about **2.05 GB**, so it is **larger than the 2 GiB limit** for a GitHub Release asset. Download link: *(add link here)*.
+- **Download:** [app-release.apk on Google Drive](https://drive.google.com/file/d/1oqD1EhcYGJaSUmCqj5aYR2Hk1sSKETZA/view?usp=drive_link) (~2.05 GB). The APK is hosted outside GitHub because it exceeds the 2 GiB limit for Release files.
+- To install it, allow installation from unknown sources for the app you open the file with (browser or file manager). Google Drive may warn that it cannot scan such a large file for viruses: choose *Download anyway*.
 
 The release APK is signed with a debug key. It is fine for sideloading between friends, but it is not meant for store publication.
 
@@ -110,6 +114,14 @@ app/src/release/assets/models/
     ├── tokenizer/  (merges.txt, tokenizer_config.json, vocab.json)
     └── silero_vad.onnx              ← sherpa-onnx release "asr-models": silero_vad.onnx
 ```
+
+Download links:
+
+| File | Where to get it |
+|---|---|
+| `Hy-MT2-1.8B-Q4_K_M.gguf` | [tencent/Hy-MT2-1.8B-GGUF](https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF/tree/main) on Hugging Face |
+| Qwen3-ASR files (`conv_frontend.onnx`, `encoder.int8.onnx`, `decoder.int8.onnx`, `tokenizer/`) | archive `sherpa-onnx-qwen3-asr-0.6B-int8-2026-03-25` in the [sherpa-onnx `asr-models` release](https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models): extract it and copy only these files (`test_wavs/` is not needed) |
+| `silero_vad.onnx` | [sherpa-onnx `asr-models` release](https://github.com/k2-fsa/sherpa-onnx/releases/tag/asr-models) |
 
 - **Release** build (`assembleRelease`): the models are packed uncompressed into the APK (`noCompress += gguf, onnx`).
 - **Debug** build: the APK contains no models. Copy the `.gguf` file with adb into the app's external folder:
