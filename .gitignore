@@ -1,0 +1,38 @@
+# --- Android Studio / Gradle ---
+*.iml
+.gradle/
+.kotlin/
+/build
+/app/build
+/llamalib/build
+/captures
+.externalNativeBuild
+.cxx/
+.DS_Store
+Thumbs.db
+
+# Impostazioni locali dell'IDE (contengono percorsi del PC)
+.idea/
+
+# Percorso dell'SDK sul PC: contiene il nome utente di Windows
+local.properties
+
+# --- Firma e segreti ---
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+google-services.json
+.env
+
+# --- Modelli e file grandi (si scaricano a parte, vedi README) ---
+app/src/release/assets/models/
+*.gguf
+*.onnx
+*.tar
+*.tar.bz2
+*.apk
+*.aab
+
+# --- Dati di test personali ---
+*.log
